@@ -1,0 +1,30 @@
+
+//////////setting.py////////////
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'OPTIONS': {
+            'service': 'my_service',
+            'passfile': '.my_pgpass',
+        },
+    }
+}
+
+
+
+/////////.pg_service-conf////////////
+
+[my_service]
+host=localhost
+user=USER
+dbname=NAME
+port=5432
+
+
+
+
+/////////.my_pgPASS////////////
+
+
+localhost:5432:NAME:USER:PASSWORD
