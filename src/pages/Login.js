@@ -57,7 +57,7 @@ const Login = ()  => {
         <span className="text-gray-400">
           ¿No tienes cuenta?{" "}
           <a
-            href="#"
+            href="register"
             className="text-indigo-400 hover:text-indigo-500 transition-colors"
           >
             Registrate

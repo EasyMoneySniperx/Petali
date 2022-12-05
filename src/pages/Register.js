@@ -68,7 +68,7 @@ const Register = ()  => {
                 <span className="text-gray-400">
                     ¿Ya tienes cuenta?{" "}
                     <a
-                        href="#"
+                        href="login"
                         className="text-indigo-400 hover:text-indigo-500 transition-colors"
                     >
                         Ingresa
