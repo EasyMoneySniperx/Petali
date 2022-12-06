@@ -1,0 +1,13 @@
+CREATE SEQUENCE sec_usuario_id
+START WITH 2022
+INCREMENT BY 1;
+
+create table usuario(
+	id_usuario int DEFAULT nextval('sec_usuario_id'),
+	contrasena int not null,
+    name_mascota varchar(50) not null,
+	telefono int not null,
+	correo varchar(30) not null,
+    PRIMARY KEY (id_usuario)
+);
+
