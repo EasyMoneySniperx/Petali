@@ -21,6 +21,7 @@ const Login = ()  => {
       >
         <img
           src="https://cdn-icons-png.flaticon.com/512/281/281764.png"
+          alt="login alt"
           width="20"
           height="20"
         />
@@ -64,7 +65,7 @@ const Login = ()  => {
           </a>
         </span>
         <a
-          href="#"
+          href="/#"
           className="text-gray-400 hover:text-gray-200 transition-colors"
         >
           ¿Olvidaste tu contraseña?

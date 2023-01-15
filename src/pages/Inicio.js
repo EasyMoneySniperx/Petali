@@ -22,7 +22,7 @@ const Inicio = ()  => {
                     </div>
                 </div>
                 <div class="items-center hidden md:flex">
-                    <a href ="#"
+                    <a href ="mapa"
                     class="mx-3 text-lg text-white uppercase cursor-pointer hover:text-gray-300">
                         Navega
                     </a>
@@ -48,7 +48,7 @@ const Inicio = ()  => {
                 <br/>
                     cuatro patas
             </h1>
-            <a href="#" class="block px-4 py-3 mt-10 text-lg font-bold text-gray-800 uppercase bg-white rounded-lg hover:bg-gray-100">
+            <a href="mapa" class="block px-4 py-3 mt-10 text-lg font-bold text-gray-800 uppercase bg-white rounded-lg hover:bg-gray-100">
                 Comienza
             </a>
         </div>
