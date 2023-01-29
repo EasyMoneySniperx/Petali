@@ -1,0 +1,11 @@
+.inicio {
+    background-image: linear-gradient(
+        90deg,
+        rgb(32, 32, 32),
+        rgba(37, 40, 49, 0.8)
+        ),
+        url("../images/inicio.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
