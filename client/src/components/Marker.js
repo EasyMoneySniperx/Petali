@@ -6,12 +6,13 @@ import { LocationIcon } from "./IconLocation";
 
 const Markers = (props) => {
     const { parques } = props;
-    const markers = parques.map((parques, i) => ( //3.45412 (latitud), -76.525633 (longitud)
+//3.45412 (latitud), -76.525633 (longitud)
 
     ////const res = "locahost:4000/getdata"
     //const [0] geometry = res.latitud
     //const [1] geometry = res.longitud
     
+    const markers = parques.map((parques, i) => (
         <Marker key={i} position={parques.geometry} icon={LocationIcon} >
             <Popup>
                
