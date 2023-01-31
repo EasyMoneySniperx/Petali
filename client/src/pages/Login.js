@@ -1,8 +1,37 @@
 import "tailwindcss/tailwind.css";
 import React from 'react';
 import '../assets/css/Login.css';
+import { useState } from "react";
+import { useAuth } from "../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = ()  => {
+
+  const [user, setUser] = useState ({
+    email: "",
+    password: "",
+});
+
+const {login} = useAuth()
+
+const navegate = useNavigate()
+
+const handleChange = ({target:{name, value}}) => {
+    setUser({...user, [name]: value})
+};
+
+const handleSubmit = async (e) =>{
+    e.preventDefault()
+    try {
+        await login(user.email, user.password)
+        navegate("/mapa")
+    }catch(error){
+        console.log("error");
+
+    }
+    
+};
+
     return (
         <div className="min-h-screen bg-[#252831] grid grid-cols-1 lg:grid-cols-2">
   <div className="text-white flex flex-col items-center justify-center gap-8 p-8 max-w-lg mx-auto">
@@ -37,9 +66,11 @@ const Login = ()  => {
         <input
           type="email"
           id="email"
+          name="email"
           autoComplete="off"
           className="w-full py-2 px-4 bg-transparent border rounded-full mt-2 outline-none focus:border-indigo-400"
           placeholder="Ingresa tu correo electrónico"
+          onChange={handleChange}
         />
       </div>
       <div>
@@ -49,9 +80,11 @@ const Login = ()  => {
         <input
           type="password"
           id="password"
+          name = "password"
           autoComplete="off"
           className="w-full py-2 px-4 bg-transparent border rounded-full mt-2 outline-none focus:border-indigo-400"
           placeholder="Ingresa tu contraseña"
+          onChange={handleChange}
         />
       </div>
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 order-2 md:order-1">
@@ -74,6 +107,7 @@ const Login = ()  => {
       <div className="mt-4 order-1 md:order-2">
         <button
           type="submit"
+          onClick={handleSubmit}
           className="w-full bg-indigo-700 p-2 rounded-full hover:bg-indigo-800 transition-colors"
         >
           Iniciar sesión

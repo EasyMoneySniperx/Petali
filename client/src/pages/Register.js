@@ -1,8 +1,38 @@
 import "tailwindcss/tailwind.css";
 import React from 'react';
 import '../assets/css/Register.css';
+import { useState } from "react";
+import { useAuth } from "../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+
+    const [user, setUser] = useState ({
+        nick: "",
+        email: "",
+        password: "",
+    });
+
+    const {signup} = useAuth()
+
+    const navegate = useNavigate()
+
+    const handleChange = ({target:{name, value}}) => {
+        setUser({...user, [name]: value})
+    };
+
+    const handleSubmit = async (e) =>{
+        e.preventDefault()
+        try {
+            await signup(user.email, user.password)
+            navegate("/mapa")
+        }catch(error){
+            console.log("error");
+
+        }
+        
+    };
+
     return (
 
         <div className="min-h-screen bg-[#252831] grid grid-cols-1 lg:grid-cols-2">
@@ -36,9 +66,11 @@ const Register = () => {
                         <input
                             type="text"
                             id="name"
+                            name= "nick"
                             autoComplete="off"
                             className="w-full py-2 px-4 bg-transparent border rounded-full mt-2 outline-none focus:border-indigo-400"
                             placeholder="Ingresa tu nombre completo"
+                            onChange={handleChange}
                         />
                     </div>
                     <div>
@@ -48,9 +80,11 @@ const Register = () => {
                         <input
                             type="email"
                             id="email"
+                            name= "email"
                             autoComplete="off"
                             className="w-full py-2 px-4 bg-transparent border rounded-full mt-2 outline-none focus:border-indigo-400"
                             placeholder="Ingresa tu correo electrónico"
+                            onChange={handleChange}
                         />
                     </div>
                     <div>
@@ -60,9 +94,11 @@ const Register = () => {
                         <input
                             type="password"
                             id="password"
+                            name = "password"
                             autoComplete="off"
                             className="w-full py-2 px-4 bg-transparent border rounded-full mt-2 outline-none focus:border-indigo-400"
                             placeholder="Ingresa tu contraseña"
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4 order-2 md:order-1">
@@ -85,6 +121,7 @@ const Register = () => {
                     <div className="mt-4 order-1 md:order-2">
                         <button
                             type="submit"
+                            onClick={handleSubmit}
                             className="w-full bg-indigo-700 p-2 rounded-full hover:bg-indigo-800 transition-colors"
                         >
                             Crear cuenta
