@@ -1,8 +1,13 @@
 import "tailwindcss/tailwind.css";
 import React from 'react';
 import '../assets/css/Inicio.css';
+import { useAuth } from "../context/authContext";
 
 const Inicio = ()  => {
+    
+    const {user} = useAuth()
+    console.log(user);
+
     return (
 <div class="inicio relative h-screen overflow-hidden bg-[#252831]">
     <div class="absolute inset-0 bg-black opacity-25">
