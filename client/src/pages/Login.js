@@ -12,7 +12,7 @@ const Login = ()  => {
     password: "",
 });
 
-const {login} = useAuth()
+const {login, loginWithGoogle} = useAuth()
 
 const navegate = useNavigate()
 
@@ -28,9 +28,17 @@ const handleSubmit = async (e) =>{
     }catch(error){
         console.log("error");
 
-    }
-    
+    }  
 };
+
+const handleGoogleSigin = async() => {
+  try{
+    await loginWithGoogle();
+    navegate("/mapa");
+  }catch (error){
+    console.log(error.message);
+  }
+}
 
     return (
         <div className="min-h-screen bg-[#252831] grid grid-cols-1 lg:grid-cols-2">
@@ -45,6 +53,7 @@ const handleSubmit = async (e) =>{
    
     <div className="w-full">
       <button
+        onClick={handleGoogleSigin}
         type="button"
         className="w-full flex items-center justify-center gap-2 border p-2 px-4 rounded-full"
       >
