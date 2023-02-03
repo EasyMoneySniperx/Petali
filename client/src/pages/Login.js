@@ -4,18 +4,11 @@ import '../assets/css/Login.css';
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../actions/authActions";
-import { useDispatch, useSelector } from "react-redux";
 
 const Login = ()  => {
 
-  const { isAuthenticated } = useSelector((state)=>state.authReducer)
-  const dispatch = useDispatch();
-
-  const {username,password} = user;
-
   const [user, setUser] = useState ({
-    username: "",
+    email: "",
     password: "",
 });
 
@@ -26,10 +19,6 @@ const navegate = useNavigate()
 const handleChange = ({target:{name, value}}) => {
     setUser({...user, [name]: value})
 };
-
-const onClick = () =>{
-  dispatch(login(username,password))
-}
 
 const handleSubmit = async (e) =>{
     e.preventDefault()
@@ -81,14 +70,15 @@ const handleGoogleSigin = async() => {
     <form className="flex flex-col gap-4">
       <div>
         <label htmlFor="email" className="text-gray-200">
-          Nombre mascota *
+          Correo electrónico *
         </label>
         <input
-          id="username"
-          name="username"
+          type="email"
+          id="email"
+          name="email"
           autoComplete="off"
           className="w-full py-2 px-4 bg-transparent border rounded-full mt-2 outline-none focus:border-indigo-400"
-          placeholder="Ingresa el nombre de tu amiguito"
+          placeholder="Ingresa tu correo electrónico"
           onChange={handleChange}
         />
       </div>
@@ -126,7 +116,7 @@ const handleGoogleSigin = async() => {
       <div className="mt-4 order-1 md:order-2">
         <button
           type="submit"
-          onClick={onClick}
+          onClick={handleSubmit}
           className="w-full bg-indigo-700 p-2 rounded-full hover:bg-indigo-800 transition-colors"
         >
           Iniciar sesión
