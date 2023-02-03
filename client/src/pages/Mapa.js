@@ -33,10 +33,10 @@ const Mapa = () => {
                         Inicio
                     </a>
                     <a
-                        href="/#"
+                        href="/calificanos"
                         className="xl:py-1 xl:px-2 text-white rounded-lg hover:bg-gray-700 transition-colors"
                     >
-                        Nosotros
+                        Calificanos
                     </a>
                     <a
                         href="/#"
