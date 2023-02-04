@@ -6,6 +6,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('email', 'password')
+        
 
 # Register Serializer
 class RegisterSerializer(serializers.ModelSerializer):
