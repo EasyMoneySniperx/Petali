@@ -4,41 +4,37 @@ import '../assets/css/Login.css';
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'; 
+import Mapa from "./Mapa";
+
 
 const Login = ()  => {
+  const navigate = useNavigate();
 
-  const [user, setUser] = useState ({
-    email: "",
-    password: "",
-});
+const [username, setUsername] = useState ("");
+const [password, setPassword] = useState ("");
 
-const {login, loginWithGoogle} = useAuth()
-
-const navegate = useNavigate()
-
-const handleChange = ({target:{name, value}}) => {
-    setUser({...user, [name]: value})
-};
-
+    
 const handleSubmit = async (e) =>{
-    e.preventDefault()
-    try {
-        await login(user.email, user.password)
-        navegate("/mapa")
-    }catch(error){
-        console.log("error");
-
-    }  
+  try{
+    const res = await login(username, password);
+      navigate("/mapa");
+  }catch (error){
+    console.log(error.message);
+  }
 };
 
 const handleGoogleSigin = async() => {
   try{
     await loginWithGoogle();
-    navegate("/mapa");
+    navigate("/mapa");
   }catch (error){
     console.log(error.message);
   }
 }
+
+const {login, loginWithGoogle} = useAuth()
+
 
     return (
         <div className="min-h-screen bg-[#252831] grid grid-cols-1 lg:grid-cols-2">
@@ -53,7 +49,7 @@ const handleGoogleSigin = async() => {
    
     <div className="w-full">
       <button
-        onClick={handleGoogleSigin}
+       onClick={handleGoogleSigin}
         type="button"
         className="w-full flex items-center justify-center gap-2 border p-2 px-4 rounded-full"
       >
@@ -70,16 +66,15 @@ const handleGoogleSigin = async() => {
     <form className="flex flex-col gap-4">
       <div>
         <label htmlFor="email" className="text-gray-200">
-          Correo electrónico *
+          Nombre mascota *
         </label>
         <input
-          type="email"
-          id="email"
-          name="email"
+          id="username"
+          name="username"
           autoComplete="off"
           className="w-full py-2 px-4 bg-transparent border rounded-full mt-2 outline-none focus:border-indigo-400"
-          placeholder="Ingresa tu correo electrónico"
-          onChange={handleChange}
+          placeholder="Ingresa el nombre de tu mascota"
+          onChange={(e) => setUsername(e.target.value)}
         />
       </div>
       <div>
@@ -93,7 +88,7 @@ const handleGoogleSigin = async() => {
           autoComplete="off"
           className="w-full py-2 px-4 bg-transparent border rounded-full mt-2 outline-none focus:border-indigo-400"
           placeholder="Ingresa tu contraseña"
-          onChange={handleChange}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 order-2 md:order-1">

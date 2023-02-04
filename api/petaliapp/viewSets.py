@@ -18,6 +18,7 @@ class RegisterAPI(generics.GenericAPIView):
         "token": AuthToken.objects.create(user)[1]
         })
 
+
 class LoginAPI(KnoxLoginView):
     permission_classes = (permissions.AllowAny,)
 

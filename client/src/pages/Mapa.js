@@ -10,7 +10,8 @@ import { useAuth } from '../context/authContext';
 
 const Mapa = () => {
 
-    const {user,logout,loading} = useAuth()
+    const {userNot,logout,loading} = useAuth()
+    console.log("user "+userNot)
 
     const handleLogout = async () =>{
         await logout()
@@ -33,10 +34,10 @@ const Mapa = () => {
                         Inicio
                     </a>
                     <a
-                        href="/calificanos"
+                        href="/#"
                         className="xl:py-1 xl:px-2 text-white rounded-lg hover:bg-gray-700 transition-colors"
                     >
-                        Calificanos
+                        Nosotros
                     </a>
                     <a
                         href="/#"
@@ -66,7 +67,7 @@ const Mapa = () => {
   </div>
   <div>
     <h3 className="font-semibold">Información</h3>
-    <p className="text-gray-500">Bienvenido {user.email} </p>
+    <p className="text-gray-500">Bienvenido</p>
   </div>
 </div>
                 </div>
